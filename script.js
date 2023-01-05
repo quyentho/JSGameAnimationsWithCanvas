@@ -14,13 +14,13 @@ canvas.height = CANVAS_HEIGHT;
 const playerImage = new Image();
 playerImage.src = "shadow_dog.png";
 
-const spriteWidth = 575;
-const spriteHeight = 523;
+const spriteWidth = 575; // width of 1 dog in playerImage
+const spriteHeight = 523; // height of 1 dog in playerImage
 
-let frameX = 0;
-let frameY = 0;
-let gameFrame = 0;
-const staggerFrame = 5;
+let gameFrame = 0; // counter value that increase forever
+const staggerFrame = 5; // the deplay interval of gameFrame
+
+// max: number of images for 1 action. Count from 0.
 const frames = {
   idle: { max: 6, row: 0 },
   jump: { max: 6, row: 1 },
@@ -36,6 +36,8 @@ const frames = {
 
 function animate() {
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+  // frame run over and over again on a row with staggerFrame is the interval
   const frameRunner =
     Math.floor(gameFrame / staggerFrame) % frames[playerState].max;
   //   if (gameFrame % staggerFrame === 0) {
